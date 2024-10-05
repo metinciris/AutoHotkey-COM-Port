@@ -39,15 +39,9 @@ COMPortRead:
             DecodedData := StrGet(&Buffer, "CP1254") ; Eğer UTF-8 olmazsa, Türkçe karakterler için CP1254 kodlamasını deneyin
         }
 
-        ; Eğer veri Enter (CR veya LF) karakteri ile bitmişse
-        if (InStr(DecodedData, "`n") || InStr(DecodedData, "`r")) {
-            ; Panoya gelen veriyi kopyala ve yapıştır
-            Clipboard := DecodedData
-            SendInput ^v  ; Panodaki veriyi yapıştır
-
-            ; Enter karakterinden sonra gelen ek veriyi görmezden gel
-            Sleep, 200 ; Ekstra karakterlerin gelmesini bekleyip işlem yapmayacağız
-        }
+        ; Gelen veriyi panoya kopyala ve yapıştır
+        Clipboard := DecodedData
+        SendInput ^v  ; Panodaki veriyi yapıştır
     }
 
     ; Buffer'ı temizle
