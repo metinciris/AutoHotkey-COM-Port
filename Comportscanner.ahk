@@ -45,9 +45,8 @@ COMPortRead:
             Clipboard := DecodedData
             SendInput ^v  ; Panodaki veriyi yapıştır
 
-            ; Enter karakterinden sonra başka veri işlenmesin, timer durduruluyor
-            SetTimer, COMPortRead, Off
-            return
+            ; Enter karakterinden sonra gelen ek veriyi görmezden gel
+            Sleep, 200 ; Ekstra karakterlerin gelmesini bekleyip işlem yapmayacağız
         }
     }
 
